@@ -124,11 +124,7 @@ public class MainActivity extends ActionBarActivity implements ActionBar.TabList
 
         @Override
         public Fragment getItem(int position) {
-            if (position == 0) {
-                return HomeFragment.newInstance();
-            } else {
-                return SectionFragment.newInstance(position - 1);
-            }
+            return SectionFragment.newInstance(position);
         }
 
         @Override
