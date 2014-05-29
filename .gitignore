@@ -1,0 +1,5 @@
+.DS_Store
+**/*.iml
+.idea
+**/gen-external-apklibs/**
+**/target/**

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <splash/>
+    <jcr:content
+        cq:designPath="/etc/designs/phonegap/geometrixx/ng-webviewapp"
+        cq:lastModified="{Date}2014-05-14T09:11:39.168-04:00"
+        cq:lastModifiedBy="admin"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Geometrixx Webview App"
+        sling:redirect="true"
+        sling:redirectStatus="{Long}302"
+        sling:resourceType="foundation/components/redirect"
+        redirectTarget="/content/phonegap/geometrixx/apps/ng-geometrixx-webview/splash/home">
+        <image
+            jcr:lastModified="{Date}2013-11-08T22:47:39.166Z"
+            jcr:lastModifiedBy="admin"
+            jcr:primaryType="nt:unstructured"
+            fileReference="/content/dam/geometrixx-webview/app/phonegap-app"
+            imageRotate="0"/>
+    </jcr:content>
+</jcr:root>

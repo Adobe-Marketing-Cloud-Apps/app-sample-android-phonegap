@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>info.geometrixx</groupId>
+    <artifactId>geometrixx-webview-reactor</artifactId>
+    <version>0.9-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Geometrixx Webview App - Reactor Project</name>
+    <description>Maven Multimodule project for Geometrixx webview app.</description>
+
+    <prerequisites>
+        <maven>3.0.2</maven>
+    </prerequisites>
+
+    <!-- ====================================================================== -->
+    <!-- P R O P E R T I E S -->
+    <!-- ====================================================================== -->
+    <properties>
+        <crx.username>admin</crx.username>
+        <crx.password>admin</crx.password>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.sling</groupId>
+                    <artifactId>maven-sling-plugin</artifactId>
+                    <version>2.1.0</version>
+                    <configuration>
+                        <username>${crx.username}</username>
+                        <password>${crx.password}</password>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.day.jcr.vault</groupId>
+                    <artifactId>content-package-maven-plugin</artifactId>
+                    <version>0.0.20</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <failOnError>true</failOnError>
+                        <username>${crx.username}</username>
+                        <password>${crx.password}</password>
+                        <properties>
+                            <createdBy>Adobe Systems Incorporated</createdBy>
+                            <acHandling>merge_preserve</acHandling>
+                        </properties>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>autoInstallBundle</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.sling</groupId>
+                        <artifactId>maven-sling-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>install-bundle</id>
+                                <goals>
+                                    <goal>install</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <modules>
+      <module>content</module>
+      <module>platforms/android/geometrixx-app</module>
+    </modules>
+
+</project>

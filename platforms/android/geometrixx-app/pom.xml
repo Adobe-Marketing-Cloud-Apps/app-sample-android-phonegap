@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+ http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>info.geometrixx</groupId>
+    <artifactId>geometrixx-webview-app</artifactId>
+    <version>0.9-SNAPSHOT</version>
+    <packaging>apk</packaging>
+    <name>Geometrixx Webview App</name>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                    <artifactId>android-maven-plugin</artifactId>
+                    <version>3.8.2</version>
+                    <extensions>true</extensions>
+                    <configuration>
+                        <proguard>
+                            <skip>true</skip>
+                            <config>proguard-project.txt</config>
+                        </proguard>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <configuration>
+                    <sdk>
+                        <path>${env.ANDROID_HOME}</path>
+                        <platform>19</platform>
+                    </sdk>
+                    <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>android</groupId>
+            <artifactId>android</artifactId>
+            <version>4.4.2_r3</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Android Support Library (provides backward-compatible versions of Android framework APIs) -->
+        <dependency>
+            <groupId>android.support</groupId>
+            <artifactId>compatibility-v4</artifactId>
+            <version>19.1.0</version>
+        </dependency>
+        <!-- Allows implementation of the action bar user interface design pattern back to Android 2.1 -->
+        <dependency>
+            <groupId>android.support</groupId>
+            <artifactId>compatibility-v7-appcompat</artifactId>
+            <version>19.1.0</version>
+            <type>apklib</type>
+        </dependency>
+        <dependency>
+            <groupId>android.support</groupId>
+            <artifactId>compatibility-v7-appcompat</artifactId>
+            <version>19.1.0</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cordova</groupId>
+            <artifactId>cordova</artifactId>
+            <version>3.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.mobile</groupId>
+            <artifactId>mobile-services</artifactId>
+            <version>4.1.1</version>
+        </dependency>
+    </dependencies>
+
+</project>

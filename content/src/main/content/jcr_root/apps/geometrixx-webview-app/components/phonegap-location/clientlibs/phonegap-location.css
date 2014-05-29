@@ -1,0 +1,33 @@
+.location-details {
+    margin: 1rem;
+}
+
+.location-details .location-container {
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+
+    background-color: rgba(255,255,255,0.75);
+    border: 1px solid #BF5F00;
+    box-shadow: inset 0 1px rgba(255,255,255,0.36), 0 0 0 2px #F8AC5E;
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.location-details .location-container > h3 {
+    margin: 0;
+}
+
+.location-details .location-map {
+    width: 100%;
+    height: 20rem;
+}
+
+.location-details .location-map > div {
+    height: 100%;
+}
+
+
+

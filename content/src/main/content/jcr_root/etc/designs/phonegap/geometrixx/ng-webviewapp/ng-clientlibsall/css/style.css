@@ -1,0 +1,72 @@
+/*
+ ADOBE CONFIDENTIAL
+ __________________
+
+  Copyright 2013 Adobe Systems Incorporated
+  All Rights Reserved.
+
+ NOTICE:  All information contained herein is, and remains
+ the property of Adobe Systems Incorporated and its suppliers,
+ if any.  The intellectual and technical concepts contained
+ herein are proprietary to Adobe Systems Incorporated and its
+ suppliers and are protected by trade secret or copyright law.
+ Dissemination of this information or reproduction of this material
+ is strictly forbidden unless prior written permission is obtained
+ from Adobe Systems Incorporated.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+html{
+    height:100%;
+    width:100%;
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x:hidden;
+    width: 100%;
+    height: 100%;
+
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background: #FFF;
+    overflow-y: hidden;
+}
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+/* Scrollable content section */
+.page-content {
+    -webkit-animation: fadein 1.5s;
+    position:absolute;
+    top: 0px;
+    left:0px;
+    right:0px;
+    bottom:0px;
+    overflow-y: auto;
+}
+
+p{
+    margin-top: 0em;
+    margin-bottom: 0em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+a {
+    color: #5d5d5d;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
