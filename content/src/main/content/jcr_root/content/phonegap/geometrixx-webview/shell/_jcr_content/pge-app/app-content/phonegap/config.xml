@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="info.geometrixx.outdoorsapp" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Geometrixx</name>
+    <preference name="phonegap-version" value="3.6.0" />
+    <description>
+        Sample to illustrate the integration of managed web content with a native app
+    </description>
+
+    <author href="http://adobe.com">
+        AEM Team
+    </author>
+
+    <content src="content/phonegap/geometrixx-webview/en.html" />
+
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="handheld" />
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="auto-hide-splash-screen" value="true" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="10" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="SplashScreen" value="screen" />
+    <!--preference name="SplashScreenDelay" value="3000" /-->
+
+    <!-- File preferences -->
+    <preference name="AndroidPersistentFileLocation" value="Internal" />
+
+
+    <icon src="icon.png" />
+    <access origin="*" />
+
+    <!-- Phonegap Build Plugins -->
+    <gap:plugin name="org.apache.cordova.file" version="1.0.1" />
+    <gap:plugin name="org.apache.cordova.file-transfer" version="0.4.2"/>
+    <gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />
+
+    <!-- Platforms -->
+    <gap:platform name="android" />
+
+</widget>
