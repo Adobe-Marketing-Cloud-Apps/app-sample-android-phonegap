@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="info.geometrixx.webviewapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="info.geometrixx.outdoorsapp" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <feature name="App">
-        <param name="android-package" value="org.apache.cordova.App" />
-    </feature>
     <feature name="ADBMobile_PhoneGap">
         <param name="android-package" value="com.adobe.ADBMobile_PhoneGap" />
     </feature>
@@ -20,44 +17,36 @@
     <feature name="Zip">
         <param name="android-package" value="org.apache.cordova.Zip" />
     </feature>
-    <name>Geometrixx Webview</name>
+    <name>Geometrixx</name>
     <preference name="phonegap-version" value="3.6.0" />
     <description>
-        Sample to illustrate the integration of managed web content into an existing native app
+        Sample to illustrate the integration of managed web content with a native app
     </description>
     <author href="http://adobe.com">
         AEM Team
     </author>
-
     <content src="content/phonegap/geometrixx-webview/en.html" />
-
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="orientation" value="default" />
-    <preference name="target-device" value="universal" />
+    <preference name="target-device" value="handheld" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="false" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
-    <preference name="ios-statusbarstyle" value="black-opaque" />
     <preference name="detect-data-types" value="true" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="disable-cursor" value="false" />
-    <preference name="android-minSdkVersion" value="7" />
+    <preference name="android-minSdkVersion" value="10" />
     <preference name="android-installLocation" value="auto" />
     <preference name="SplashScreen" value="screen" />
-    <preference name="iosPersistentFileLocation" value="Library" />
     <preference name="AndroidPersistentFileLocation" value="Internal" />
-
     <icon src="icon.png" />
     <access origin="*" />
-
     <gap:plugin name="org.apache.cordova.file" version="1.0.1" />
     <gap:plugin name="org.apache.cordova.file-transfer" version="0.4.2" />
-    <gap:plugin name="org.apache.cordova.device" version="0.2.8" />
-    <gap:plugin name="org.apache.cordova.geolocation" version="0.3.6" />
-    <gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
-
+    <gap:plugin name="org.apache.cordova.geolocation" version="0.3.10" />
+    <gap:platform name="android" />
 </widget>

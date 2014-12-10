@@ -81,7 +81,7 @@
         <dependency>
             <groupId>org.apache.cordova</groupId>
             <artifactId>cordova</artifactId>
-            <version>3.4.0</version>
+            <version>3.6.4</version>
         </dependency>
         <dependency>
             <groupId>com.adobe.mobile</groupId>

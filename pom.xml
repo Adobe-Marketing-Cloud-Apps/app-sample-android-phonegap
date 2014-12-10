@@ -77,7 +77,7 @@
 
     <modules>
       <module>content</module>
-      <module>platforms/android/geometrixx-app</module>
+      <module>platforms/android</module>
     </modules>
 
 </project>

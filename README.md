@@ -46,13 +46,13 @@ Before being able to build this example Android app ensure your development envi
 
 * Install additional libs to local maven repository
 
-        cd platforms/android/geometrixx-app/libs
-        mvn install:install-file -Dfile=cordova-3.4.0.jar -DgroupId=org.apache.cordova -DartifactId=cordova -Dversion=3.4.0 -Dpackaging=jar
+        cd platforms/android/libs
+        mvn install:install-file -Dfile=cordova-3.6.4.jar -DgroupId=org.apache.cordova -DartifactId=cordova -Dversion=3.6.4 -Dpackaging=jar
         mvn install:install-file -Dfile=adobeMobileLibrary.jar -DgroupId=com.adobe.mobile -DartifactId=mobile-services -Dversion=4.1.1 -Dpackaging=jar
 
 * Build Android APK
 
-        cd platforms/android/geometrixx-app
+        cd platforms/android
         mvn clean install
 
 * Deploy and run app

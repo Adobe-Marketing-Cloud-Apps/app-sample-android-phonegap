@@ -1,0 +1,26 @@
+{
+  "name": "geometrixx-native-webview",
+  "description": "Geometrixx Native Webview app.",
+  "homepage": "http://github.com/Adobe-Marketing-Cloud/app-sample-android-phonegap",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Adobe-Marketing-Cloud/app-sample-android-phonegap.git"
+  },
+  "preferGlobal": "false",
+  "private": "true",
+  "scripts": {
+    "customize": "node res/tasks/customize",
+    "unpack": "node res/tasks/unpack",
+    "build": "node res/tasks/build",
+    "deploy": "node res/tasks/deploy",
+    "clean": "node res/tasks/clean",
+    "merge": "npm run unpack && npm run build && npm run deploy"
+  },
+  "dependencies": {
+    "shelljs": "0.2.6",
+    "prompt": "0.2.14"
+  },
+  "devDependencies": {
+
+  }
+}
