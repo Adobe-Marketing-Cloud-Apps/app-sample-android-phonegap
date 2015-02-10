@@ -2,13 +2,12 @@
 <jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
     jcr:primaryType="cq:Page">
     <jcr:content
-        cq:designPath="/etc/designs/phonegap/geometrixx/ng-webviewapp"
         cq:lastModified="{Date}2014-12-03T09:43:04.192-05:00"
         cq:lastModifiedBy="admin"
         jcr:primaryType="cq:PageContent"
         jcr:title="Geometrixx Webview App"
-        sling:resourceType="geometrixx-webview-app/components/splash-page"
-        pge-type="[app-instance]"
+        pge-dashboard-config="/apps/geometrixx-webview-app/admin/config/dashboard/webview"
+        pge-type="[app-instance,app-webview]"
         phonegap-build-exportTemplate="/content/phonegap/geometrixx-webview/shell/jcr:content/pge-app/GeometrixxWebview"
         phonegap-build-exportTemplate-dev="/content/phonegap/geometrixx-webview/shell/jcr:content/pge-app/GeometrixxWebviewDev"
         phonegap-exportTemplate="/content/phonegap/geometrixx-webview/shell/jcr:content/pge-app/app-config">
@@ -21,7 +20,6 @@
         <pge-app jcr:primaryType="nt:unstructured">
             <app-content jcr:primaryType="nt:unstructured">
                 <phonegap/>
-                <images/>
             </app-content>
             <app-config/>
             <app-config-dev/>

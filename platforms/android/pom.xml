@@ -4,9 +4,10 @@
  http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>info.geometrixx</groupId>
     <artifactId>geometrixx-webview-app</artifactId>
-    <version>0.9-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <packaging>apk</packaging>
     <name>Geometrixx Webview App</name>
 
@@ -36,7 +37,7 @@
                 <configuration>
                     <sdk>
                         <path>${env.ANDROID_HOME}</path>
-                        <platform>19</platform>
+                        <platform>21</platform>
                     </sdk>
                     <undeployBeforeDeploy>true</undeployBeforeDeploy>
                 </configuration>
@@ -56,26 +57,26 @@
         <dependency>
             <groupId>android</groupId>
             <artifactId>android</artifactId>
-            <version>4.4.2_r3</version>
+            <version>4.4.2_r4</version>
             <scope>provided</scope>
         </dependency>
         <!-- Android Support Library (provides backward-compatible versions of Android framework APIs) -->
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v4</artifactId>
-            <version>19.1.0</version>
+            <version>21.0.3</version>
         </dependency>
         <!-- Allows implementation of the action bar user interface design pattern back to Android 2.1 -->
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v7-appcompat</artifactId>
-            <version>19.1.0</version>
+            <version>21.0.3</version>
             <type>apklib</type>
         </dependency>
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v7-appcompat</artifactId>
-            <version>19.1.0</version>
+            <version>21.0.3</version>
             <type>jar</type>
         </dependency>
         <dependency>

@@ -2,17 +2,28 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- ====================================================================== -->
+    <!-- P A R E N T  P R O J E C T -->
+    <!-- ====================================================================== -->
+    <parent>
+        <groupId>info.geometrixx</groupId>
+        <artifactId>geometrixx-webview-reactor</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <groupId>info.geometrixx</groupId>
     <artifactId>geometrixx-webview-content</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>content-package</packaging>
-
-    <name>Geometrixx Webview App</name>
+    <name>Geometrixx Webview Content</name>
 
     <prerequisites>
         <maven>3.0.2</maven>
     </prerequisites>
 
+    <!-- ====================================================================== -->
+    <!-- P R O P E R T I E S -->
+    <!-- ====================================================================== -->
     <properties>
         <crx.host>localhost</crx.host>
         <crx.port>4502</crx.port>
@@ -65,62 +76,6 @@
             </plugin>
         </plugins>
     </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.adobe.cq.mobile</groupId>
-            <artifactId>cq-mobile-phonegap-wcm-core</artifactId>
-            <version>6.0.30</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq</groupId>
-            <artifactId>cq-commons</artifactId>
-            <version>5.7.4</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-api</artifactId>
-            <version>5.7.8</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.day.cq.wcm</groupId>
-            <artifactId>cq-wcm-foundation</artifactId>
-            <version>5.7.2</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.commons.json</artifactId>
-            <version>2.0.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.sling</groupId>
-            <artifactId>org.apache.sling.api</artifactId>
-            <version>2.4.3-R1488084</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.adobe.granite</groupId>
-            <artifactId>com.adobe.granite.ui.commons</artifactId>
-            <version>5.5.130</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.jcr</groupId>
-            <artifactId>jcr</artifactId>
-            <version>2.0</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
 
     <profiles>
         <profile>

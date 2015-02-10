@@ -67,7 +67,7 @@ Experience Manager (AEM 6.0)
 * First a package that contains the content to be managed by AEM needs to be installed.
 
         cd content
-        mvn package content-package:install
+        mvn -PautoInstallPackage clean install
 
 * Then download the PhoneGap compatible content sync ZIP of the content.
 

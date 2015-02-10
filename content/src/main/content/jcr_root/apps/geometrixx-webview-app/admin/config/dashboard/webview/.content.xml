@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    tiles="[/libs/mobileapps/admin/config/dashboard/apps/info,/libs/mobileapps/admin/config/dashboard/apps/appmetrics,/libs/mobileapps/admin/config/dashboard/apps/content,/libs/mobileapps/admin/config/dashboard/apps/updatepackages]"/>
