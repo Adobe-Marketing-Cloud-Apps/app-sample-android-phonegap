@@ -6,6 +6,3 @@
 **/target/**
 **/node_modules
 tmp
-**/java/com
-**/java/org
-**/assets/www

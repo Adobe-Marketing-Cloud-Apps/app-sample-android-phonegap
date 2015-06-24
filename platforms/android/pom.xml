@@ -57,16 +57,19 @@
         <dependency>
             <groupId>android</groupId>
             <artifactId>android</artifactId>
-            <version>4.4.2_r4</version>
+            <version>5.1.1_r2</version>
             <scope>provided</scope>
         </dependency>
         <!-- Android Support Library (provides backward-compatible versions of Android framework APIs) -->
+        <!--
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v4</artifactId>
             <version>21.0.3</version>
         </dependency>
+        -->
         <!-- Allows implementation of the action bar user interface design pattern back to Android 2.1 -->
+        <!--
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v7-appcompat</artifactId>
@@ -79,15 +82,16 @@
             <version>21.0.3</version>
             <type>jar</type>
         </dependency>
+        -->
         <dependency>
             <groupId>org.apache.cordova</groupId>
             <artifactId>cordova</artifactId>
-            <version>3.6.4</version>
+            <version>4.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.adobe.mobile</groupId>
             <artifactId>mobile-services</artifactId>
-            <version>4.1.1</version>
+            <version>4.5.1</version>
         </dependency>
     </dependencies>
 

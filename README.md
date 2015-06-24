@@ -87,8 +87,26 @@ Experience Manager (AEM 6.0)
     * libs (additional libs)
     * src/com -> src/main/java/com (cordova plugins)
     * src/org -> src/main/java/org (cordova plugins)
+    
+Build Scripts
+----
 
-##OTA Updates
+Several build scripts have been created to make it easier to synchronize the native android project with updated content from AEM.
+
+* Install required modules
+
+        npm install
+        
+* Download content package from AEM
+
+        npm run fetch
+        
+* Merge ZIP contents with your Android project
+        
+        npm run merge        
+
+OTA Updates
+----
 
 In order to support OTA updates the content package needs to be replicated to a publish server.
 

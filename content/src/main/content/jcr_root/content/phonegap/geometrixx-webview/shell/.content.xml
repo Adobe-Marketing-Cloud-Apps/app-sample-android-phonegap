@@ -6,8 +6,9 @@
         cq:lastModifiedBy="admin"
         jcr:primaryType="cq:PageContent"
         jcr:title="Geometrixx Webview App"
-        pge-dashboard-config="/apps/geometrixx-webview-app/admin/config/dashboard/webview"
+        pge-dashboard-config="/apps/geometrixx-webview-app/admin/content/dashboard/tiles/webview"
         pge-type="[app-instance,app-webview]"
+        sling:resourceType="mobileapps/components/phonegap/instance"
         phonegap-build-exportTemplate="/content/phonegap/geometrixx-webview/shell/jcr:content/pge-app/GeometrixxWebview"
         phonegap-build-exportTemplate-dev="/content/phonegap/geometrixx-webview/shell/jcr:content/pge-app/GeometrixxWebviewDev"
         phonegap-exportTemplate="/content/phonegap/geometrixx-webview/shell/jcr:content/pge-app/app-config">

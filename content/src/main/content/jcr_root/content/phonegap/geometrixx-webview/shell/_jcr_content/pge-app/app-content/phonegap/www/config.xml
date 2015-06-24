@@ -38,7 +38,11 @@
     <!-- Platforms -->
     <gap:platform name="android" />
 
-    <!-- Features -->
-
+    <!-- Plugins -->
+    <plugin name="cordova-plugin-file" spec="^2.0.0" />
+    <plugin name="cordova-plugin-file-transfer" spec="^1.0.0" />
+    <plugin name="cordova-plugin-geolocation" spec="^1.0.0" />
+    <plugin name="phonegap-plugin-contentsync" spec=">=1.1.3" />
+    <plugin name="ADBMobile" spec="https://github.com/Adobe-Marketing-Cloud/mobile-services#0482f9cedf90c98a8d4b07219ece1933b2e46a60" />
 
 </widget>
