@@ -5,7 +5,7 @@
     jcr:title="Geometrixx Webview App"
     allowedPaths="[/content/phonegap,/content/mobileapps(/.*)?]"
     templateType="mobileapps"
-    wizard="/libs/mobileapps/native/admin/content/createpublishappsteps.html">
+    wizard="/libs/mobileapps/admin/content/createappsteps.html">
     <jcr:content
         cq:allowedTemplates="[/apps/geometrixx-webview-app/templates/.*]"
         cq:designPath="/etc/designs/phonegap/geometrixx/ng-webviewapp"
