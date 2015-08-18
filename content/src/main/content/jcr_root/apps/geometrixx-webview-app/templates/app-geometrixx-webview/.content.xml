@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:description="A blank Geometrixx Webview App"
+    jcr:primaryType="cq:Template"
+    jcr:title="Geometrixx Webview App"
+    allowedPaths="[/content/phonegap,/content/mobileapps]"
+    templateType="mobileapps"
+    wizard="/libs/mobileapps/admin/content/createappsteps.html">
+    <jcr:content
+        cq:allowedTemplates="[/apps/geometrixx-webview-app/templates/.*]"
+        cq:designPath="/etc/designs/phonegap/geometrixx/ng-webviewapp"
+        cq:lastModified="{Date}2014-12-03T09:43:04.192-05:00"
+        cq:lastModifiedBy="admin"
+        jcr:primaryType="cq:PageContent"
+        jcr:title="Geometrixx Webview App"
+        sling:redirect="true"
+        sling:redirectStatus="{Long}302"
+        sling:resourceType="foundation/components/redirect"
+        pge-dashboard-config="/apps/geometrixx-webview-app/admin/content/dashboard/tiles/webview"
+        pge-type="[app-group]"
+        redirectTarget="/content/phonegap/geometrixx-webview/en/home"/>
+</jcr:root>
