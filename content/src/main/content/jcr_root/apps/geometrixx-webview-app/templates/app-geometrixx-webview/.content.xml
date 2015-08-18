@@ -3,7 +3,7 @@
     jcr:description="A blank Geometrixx Webview App"
     jcr:primaryType="cq:Template"
     jcr:title="Geometrixx Webview App"
-    allowedPaths="[/content/phonegap,/content/mobileapps(/.*)?]"
+    allowedPaths="[/content/phonegap,/content/mobileapps]"
     templateType="mobileapps"
     wizard="/libs/mobileapps/admin/content/createappsteps.html">
     <jcr:content
