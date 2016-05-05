@@ -14,11 +14,22 @@ The Phonegap [documentation](http://docs.phonegap.com/develop/1-embed-webview/an
 
 This example however, embeds the Cordova WebView as an Android fragment instead in order to support the Android View Pager.
 
-##Installation
+## Minimum requirements for development
 
-This example contains two projects that need to be built and deployed.  First there is the Android app itself.  The app
+1. Maven (tested: Apache Maven `3.2.2`)
+2. Gradle (tested: `2.1`)
+2. Git (tested: git version `2.3.2`)
+3. Android SDK (tested: `API 23`)
+4. Android Studio (tested: `2.1`)
+4. Cordova (tested: `5.3.3`)
+5. [node.js](http://nodejs.org/) version `>=0.12.x`
+6. AEM 6.2
+
+##Getting Started
+
+This example contains two projects that need to be built and deployed.  First there is the *Android app* itself.  The app
 consists of one activity that uses a FragmentPager for moving between views.  The Home Page view fragment injects a CordovaWebView and
-the remaining views are native Android.  Second, there is an AEM compatible package that contains all the required content and components for rendering the web content that will be displayed by the app.  Installing this package will allow you to manage all your web content within AEM and have it delivered to your Android app via content sync.
+the remaining views are native Android.  Second, there is an *AEM compatible package* that contains all the required content and components for rendering the web content that will be displayed by the app.  Installing this package will allow you to manage all your web content within AEM and have it delivered to your Android app via content sync.
 
 Android
 ----
@@ -28,7 +39,6 @@ Android
 Before being able to build this example Android app ensure your development environment is set up correctly.
 
 1. Android SDK (http://developer.android.com/sdk/index.html)
-1. Gradle 2.1+
 1. ANDROID_HOME environment variable
 2. Android Studio 2.0+
 
