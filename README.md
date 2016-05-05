@@ -48,9 +48,7 @@ See
         mvn clean install
 
 * Command Line
-
-- <http://developer.android.com/tools/building/building-cmdline.html>
-
+  * <http://developer.android.com/tools/building/building-cmdline.html>
 
 Experience Manager (AEM Mobile 6.2)
 ----
