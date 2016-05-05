@@ -33,5 +33,6 @@
 'cqContentSyncUpdate',
 'cqAppControllers',
 'cqAppNavigation',
-'phonegapLocation'
+'phonegapLocation',
+'geometrixx-banner'
 ]

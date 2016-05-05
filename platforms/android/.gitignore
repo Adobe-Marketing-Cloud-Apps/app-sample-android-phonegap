@@ -1,3 +1,8 @@
-**/java/com
-**/java/org
-**/assets/www
+# Non-project-specific build files:
+local.properties
+/gradlew
+/gradlew.bat
+/gradle
+/build
+/platform_www
+

@@ -9,13 +9,11 @@
   "preferGlobal": "false",
   "private": "true",
   "scripts": {
-    "customize": "node res/tasks/customize",
     "fetch": "node res/tasks/fetch",
-    "build": "node res/tasks/build",
     "deploy": "node res/tasks/deploy",
     "clean": "node res/tasks/clean",
-    "merge": "npm run build && npm run deploy",
-    "full": "npm run fetch && npm run build && npm run deploy"
+    "merge": "npm run deploy",
+    "full": "npm run fetch && npm run deploy"
   },
   "dependencies": {
     "shelljs": "0.2.6",

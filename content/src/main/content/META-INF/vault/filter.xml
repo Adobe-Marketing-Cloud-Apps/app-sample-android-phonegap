@@ -3,5 +3,5 @@
     <filter root="/apps/geometrixx-webview-app"/>
     <filter root="/etc/designs/phonegap/geometrixx/ng-webviewapp"/>
     <filter root="/content/dam/geometrixx-webview"/>
-    <filter root="/content/phonegap/geometrixx-webview"/>
+    <filter root="/content/mobileapps/geometrixx-webview"/>
 </workspaceFilter>

@@ -1,0 +1,56 @@
+/*************************************************************************
+ *
+ * ADOBE CONFIDENTIAL
+ * ___________________
+ *
+ *  Copyright 2013 Adobe Systems Incorporated
+ *  All Rights Reserved.
+ *
+ * NOTICE:  All information contained herein is, and remains
+ * the property of Adobe Systems Incorporated and its suppliers,
+ * if any.  The intellectual and technical concepts contained
+ * herein are proprietary to Adobe Systems Incorporated and its
+ * suppliers and are protected by trade secret or copyright law.
+ * Dissemination of this information or reproduction of this material
+ * is strictly forbidden unless prior written permission is obtained
+ * from Adobe Systems Incorporated.
+ **************************************************************************/
+
+* {
+    -moz-box-sizing: content-box; /* or `border-box` */
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+html {
+    height: 100%;
+}
+body.cq-mobile-phonegap-splash-page {
+    background-color: #FFF;
+    margin: 0;
+}
+.placeholder {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+}
+
+.spinner {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    -webkit-animation: spinner .6s infinite linear;
+}
+
+@-webkit-keyframes spinner {
+    0% {-webkit-transform: rotate(0deg);}
+    25% {-webkit-transform: rotate(90deg);}
+    50% {-webkit-transform: rotate(180deg);}
+    75% {-webkit-transform: rotate(270deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}

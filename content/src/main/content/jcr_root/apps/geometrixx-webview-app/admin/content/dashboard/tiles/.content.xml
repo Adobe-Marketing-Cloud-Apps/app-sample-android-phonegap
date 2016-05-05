@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:rep="internal"
-    jcr:primaryType="nt:unstructured"/>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+    <webview
+        jcr:primaryType="nt:unstructured"
+        tiles="[/libs/mobileapps/admin/content/dashboard/tiles/default/info,/libs/mobileapps/admin/content/dashboard/tiles/default/appmetrics,/libs/mobileapps/admin/content/dashboard/tiles/default/content,/libs/mobileapps/admin/content/dashboard/tiles/default/updatepackages,/libs/mobileapps/admin/content/dashboard/tiles/default/cloudservices,/libs/mobileapps/admin/content/dashboard/tiles/default/pushnotifications]"/>
+</jcr:root>

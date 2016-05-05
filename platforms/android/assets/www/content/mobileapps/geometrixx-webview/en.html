@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>English - Splash</title>
+    
+
+    <link rel="stylesheet" href="../../../etc/clientlibs/topcoat.css" type="text/css">
+<link rel="stylesheet" href="../../../apps/geometrixx-webview-app/components/splash-page/clientlibs.css" type="text/css">
+
+
+
+
+
+    <!-- Enable all requests, inline styles, and eval() -->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+
+</head>
+<body class="cq-mobile-phonegap-splash-page">
+
+    
+        
+        
+
+            <script type="text/javascript" src="../../../cordova.js"></script>
+            <script type="text/javascript" src="../../../etc/clientlibs/angularjs.js"></script>
+<script type="text/javascript" src="../../../apps/geometrixx-webview-app/components/splash-page/clientlibs.js"></script>
+
+<div class="placeholder">
+    <div class="spinner"></div>
+</div>
+
+            <script>
+                // Redirect to the following path once init has finished
+                var successRedirectPath = '/content/mobileapps/geometrixx-webview/en/home.html';
+
+                var initializationComplete = function(error, localContentPath) {
+                    if (error) {
+                        return console.error("ContentSync init error: " + error);
+                    }
+
+                    // App was successfully initialized. Redirect to the new local content path.
+                    console.log("ContentSync success. Returned path: [" + localContentPath + "]");
+                    return window.location.href = localContentPath + successRedirectPath;
+                };
+
+                var initializeApplication = function() {
+                    var contentInitializer = CQ.mobile.contentInit({
+                        id: 'AEMAngularApp'
+                    });
+                    contentInitializer.initializeApplication(initializationComplete);
+                };
+
+                // Begin initialization once Cordova bridge is ready
+                document.addEventListener('deviceready', initializeApplication, false)
+            </script>
+        
+    
+</body>
+</html>

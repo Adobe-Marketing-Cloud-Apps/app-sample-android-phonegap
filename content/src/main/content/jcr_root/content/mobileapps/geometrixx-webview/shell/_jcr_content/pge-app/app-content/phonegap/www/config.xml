@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="info.geometrixx.webviewapp" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Geometrixx</name>
+    <description>
+        Sample to illustrate the integration of managed web content with a native app.
+    </description>
+    <author href="http://www.adobe.com">
+        AEM Team
+    </author>
+    <content src="content/mobileapps/geometrixx-webview/en.html" />
+    <icon src="icon.png" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-intent href="market:*" />
+    <preference name="loglevel" value="DEBUG" />
+    <gap:platform name="android" />
+    <feature name="Sync">
+        <param name="android-package" value="com.adobe.phonegap.contentsync.Sync" />
+    </feature>
+    <feature name="Zip">
+        <param name="android-package" value="com.adobe.phonegap.contentsync.Sync" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="ADBMobile_PhoneGap">
+        <param name="android-package" onload="true" value="com.adobe.ADBMobile_PhoneGap" />
+        <param name="onload" value="true" />
+    </feature>
+</widget>

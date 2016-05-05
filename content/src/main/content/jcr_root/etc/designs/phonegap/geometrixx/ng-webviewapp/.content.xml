@@ -13,7 +13,7 @@
                 jcr:lastModifiedBy="admin"
                 jcr:primaryType="nt:unstructured"
                 sling:resourceType="foundation/components/parsys"
-                components="[group:PhoneGap]">
+                components="[group:PhoneGap,group:Geometrixx Webview]">
                 <section jcr:primaryType="nt:unstructured"/>
             </content-par>
         </ng-page>

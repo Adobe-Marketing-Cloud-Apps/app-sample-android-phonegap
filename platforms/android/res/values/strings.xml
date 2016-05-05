@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">Geometrixx</string>
-    <string name="title_home">Home</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
+    <!-- App label shown within list of installed apps, battery & network usage screens. -->
+    <string name="app_name">Geomtrixx</string>
+    <!-- App label shown on the launcher. -->
+    <string name="launcher_name">@string/app_name</string>
+    <!-- App label shown on the task switcher. -->
+    <string name="activity_name">@string/launcher_name</string>
+    <string name="title_activity_pager">PagerActivity</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello World!</string>
-
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>

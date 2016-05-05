@@ -1,0 +1,28 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "phonegap-plugin-contentsync": {
+            "PACKAGE_NAME": "info.geometrixx.webviewapp"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "info.geometrixx.webviewapp"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "info.geometrixx.webviewapp"
+        },
+        "adobe-mobile-services": {
+            "PACKAGE_NAME": "info.geometrixx.webviewapp"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "info.geometrixx.webviewapp"
+        }
+    }
+}

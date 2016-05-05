@@ -1,0 +1,19 @@
+{
+   "content": [
+      {
+      "name": "en",
+      "title": "English",
+      "type": "CONTENT",
+      "path": "/content/mobileapps/geometrixx-webview/en",
+      "updatePath": "/content/mobileapps/geometrixx-webview/en/jcr:content/pge-app/app-config"
+      },
+      {
+      "name": "shell",
+      "title": "Geometrixx Webview App",
+      "type": "INSTANCE",
+      "path": "/content/mobileapps/geometrixx-webview/shell",
+      "updatePath": "/content/mobileapps/geometrixx-webview/shell/jcr:content/pge-app/app-config"
+      }
+   ],
+   "serverURL": "http://localhost:4503/"
+   }
