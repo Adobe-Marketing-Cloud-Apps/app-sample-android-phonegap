@@ -1,4 +1,4 @@
-Native Android App with Embedded Webview and AEM 6.0
+Native Android App with Embedded Webview and AEM 6.2
 ===========
 
 A native Android example running a Cordova (ie. PhoneGap) WebView home page connected to AEM6.
