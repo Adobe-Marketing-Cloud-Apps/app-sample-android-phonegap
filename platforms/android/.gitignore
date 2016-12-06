@@ -4,6 +4,6 @@ local.properties
 /gradlew
 /gradlew.bat
 /gradle
-/build
+**/build/**
 
 

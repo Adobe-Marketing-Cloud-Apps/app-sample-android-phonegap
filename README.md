@@ -50,15 +50,16 @@ Before being able to build this example Android app ensure your development envi
 
 ###Build
 
-See
+* Use Android Studio
 
-* Android Sutdio
-
-        cd platforms/android
-        mvn clean install
+or
 
 * Command Line
   * <http://developer.android.com/tools/building/building-cmdline.html>
+  * Build Debug Android APK
+        ./gradlew assembleDebug
+  * Deploy and Run
+        ./gradlew installDebug
 
 Experience Manager (AEM Mobile 6.2)
 ----
@@ -72,7 +73,7 @@ Experience Manager (AEM Mobile 6.2)
 
         http://localhost:4502/content/mobileapps/geometrixx-webview/shell.cli-dev.zip
 
-* Unzip to your local file system 
+* Unzip to your local file system
 
 * Go to the Android platform of the phonegap project you just built
 
@@ -100,7 +101,7 @@ Several build scripts have been created to make it easier to synchronize the nat
         npm run merge        
 
 * Download and merge at the same time
-    
+
         npm run full
 
 
