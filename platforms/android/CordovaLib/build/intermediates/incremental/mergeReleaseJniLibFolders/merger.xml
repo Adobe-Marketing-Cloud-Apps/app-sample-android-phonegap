@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/arumsey/Dev/Adobe-Marketing-Cloud-Apps/app-sample-android-phonegap/platforms/android/CordovaLib/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/Users/arumsey/Dev/Adobe-Marketing-Cloud-Apps/app-sample-android-phonegap/platforms/android/CordovaLib/src/release/jniLibs"/></dataSet></merger>

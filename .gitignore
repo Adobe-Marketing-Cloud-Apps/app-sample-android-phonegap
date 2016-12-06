@@ -2,8 +2,7 @@
 *.zip
 **/*.iml
 .idea
-**/gen-external-apklibs/**
 **/target/**
 **/node_modules
-tmp
+temp
 .vlt
