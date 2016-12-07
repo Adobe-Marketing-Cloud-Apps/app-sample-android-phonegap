@@ -32,14 +32,7 @@
                 sling:resourceType="geometrixx-webview-app/components/banner"
                 action="navigate"
                 actionValue="1"
-                fileReference="/content/dam/geometrixx-outdoors/cards/news.jpg"/>
-            <phonegap_location
-                jcr:created="{Date}2014-05-14T09:12:27.572-04:00"
-                jcr:createdBy="admin"
-                jcr:lastModified="{Date}2014-05-14T09:12:27.572-04:00"
-                jcr:lastModifiedBy="admin"
-                jcr:primaryType="nt:unstructured"
-                sling:resourceType="geometrixx-webview-app/components/phonegap-location"/>
+                fileReference="/content/dam/we-retail/en/experiences/arctic-surfing-in-lofoten/surfer-ready-to-go.jpg"/>
         </content-par>
     </jcr:content>
 </jcr:root>

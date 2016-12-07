@@ -15,6 +15,10 @@
  from Adobe Systems Incorporated.
  */
 
+/**
+ * @deprecated.  This code is deprecated as of 6.3.  Please use the equivalent in content-sync-2.
+ */
+
 window.CQ = window.CQ || {};
 CQ.mobile = CQ.mobile || {};
 /*************************************************************************
@@ -34,6 +38,12 @@ CQ.mobile = CQ.mobile || {};
  * is strictly forbidden unless prior written permission is obtained
  * from Adobe Systems Incorporated.
  **************************************************************************/
+
+
+/**
+ * @deprecated.  This code is deprecated as of 6.3.  Please use the equivalent in content-sync-2.
+ */
+
 
 /**
  * Utility for dealing with Content Sync updates.
@@ -235,7 +245,16 @@ CQ.mobile.contentUtils = {
     getContentPackageDetailsByName: function(name) {
         var key = this.contentPackageDetailsKeyPrefix + name;
         var details = localStorage.getItem(key);
+
         return JSON.parse(details);
+    },
+
+    /**
+     * Removes the stored package information
+     * @param {string} name - content package name
+     */
+    removeContentPackageDetails: function(name) {
+        localStorage.removeItem(this.contentPackageDetailsKeyPrefix + name);
     },
 
     mergeRequestHeaders: function( specRequestHeaders ) {
@@ -254,6 +273,7 @@ CQ.mobile.contentUtils = {
         return specRequestHeaders;
     }
 };
+
 /*************************************************************************
  *
  * ADOBE CONFIDENTIAL
@@ -271,6 +291,10 @@ CQ.mobile.contentUtils = {
  * is strictly forbidden unless prior written permission is obtained
  * from Adobe Systems Incorporated.
  **************************************************************************/
+
+/**
+ * @deprecated.  This code is deprecated as of 6.3.  Please use the equivalent in content-sync-2.
+ */
 
 /**
  * Functional constructor for CQ.mobile.contentInit. Assumes `deviceready` 
@@ -310,6 +334,7 @@ CQ.mobile.contentInit = function(spec) {
      */
     var initializeApplication = function(callback) {
 
+        console.warn('[contentInit] content-sync\'s contentInit.js is deprecated.  Please use content-sync-2 Javascript functions.');
         console.log('[contentInit] determine if initial app copy needs to occur');
         console.log('[contentInit] current location: [' + currentLocation + ']');
 
@@ -669,6 +694,10 @@ CQ.mobile.contentInit = function(spec) {
  **************************************************************************/
 
 /**
+ * @deprecated.  This code is deprecated as of 6.3.  Please use the equivalent in content-sync-2.
+ */
+
+/**
  * Functional constructor for CQ.mobile.contentUpdate. Assumes `deviceReady`
  * event has already fired.
  */
@@ -718,6 +747,7 @@ CQ.mobile.contentUpdate = function(spec) {
      *      Returns a path to content if successful, and an error otherwise. 
      */
     var updateContentPackageByName = function(name, callback) {
+        console.warn('[contentUpdate] content-sync\'s contentUpdate.js is deprecated.  Please use content-sync-2 Javascript functions.');
         var contentPackageDetails = CQ.mobile.contentUtils.getContentPackageDetailsByName(name);
         
         if (contentPackageDetails) {
@@ -812,6 +842,7 @@ CQ.mobile.contentUpdate = function(spec) {
      * @param {function} callback - called with two parameters: (error, result)
      */
     var downloadContentPackage = function(contentSyncPath, contentPackageName, contentPackageRootPage, callback) {
+        console.warn('[contentUpdate] content-sync\'s contentUpdate.js is deprecated.  Please use content-sync-2 Javascript functions.');
         CQ.mobile.contentUtils.requestFileSystemRoot(function(error, fileSystemRoot) {
             if (error) {
                 return callback(error);
@@ -906,7 +937,7 @@ CQ.mobile.contentUpdate = function(spec) {
 
         var removeUpdatePayloadSuccess = function() {
             console.log( '[contentUpdate] successfully removed the update payload' );
-            
+
             updateLastUpdatedTimestamp(destinationEntry.nativeURL, contentPackageName, function(error) {
                 if (error) {
                     return callback(error);
@@ -917,7 +948,7 @@ CQ.mobile.contentUpdate = function(spec) {
         };
 
         var removeUpdatePayloadError = function( error ) {
-            var errorMessage = '[contentUpdate] error: failed to remove update payload. ' + 
+            var errorMessage = '[contentUpdate] error: failed to remove update payload. ' +
                     CQ.mobile.contentUtils.getFileRelatedErrorMessage(error);
             console.error(errorMessage);
             return callback(errorMessage);

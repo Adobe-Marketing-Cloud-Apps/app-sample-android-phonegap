@@ -69,7 +69,7 @@ Experience Manager (AEM Mobile 6.2)
         cd content
         mvn -PautoInstallPackage clean install
 
-* Then download the PhoneGap compatible content sync ZIP of the content.
+* Then download the content sync ZIP of the content from AEM Mobile.
 
         http://localhost:4502/content/mobileapps/geometrixx-webview/shell.cli-dev.zip
 
@@ -80,7 +80,7 @@ Experience Manager (AEM Mobile 6.2)
         cd platforms/android
 
 * Copy the following files/directories to platforms/android
-    * assets (web content)
+    * www (web content)
     * res/xml (cordova config)
 
 Build Scripts
@@ -115,6 +115,31 @@ In order to support OTA updates the content package needs to be replicated to a 
 * Replicate package
 * Download content sync ZIP from publish server
         <http://localhost:4503/content/mobileapps/geometrixx-webview/shell.cli-dev.zip>
+
+Manually Updating Cordova
+----
+
+    cordova create cordova
+    cd cordova
+    cordova platform add android
+
+Add plugins
+
+    cordova plugin add cordova-plugin-file@^4.3.0
+    cordova plugin add cordova-plugin-file-transfer@^1.6.0
+    cordova plugin add phonegap-plugin-contentsync@^1.2.4
+    cordova plugin add adobe-mobile-services@4.13.1-cor
+
+Copy everything to `platform/android`
+
+    src
+    assets/www/plugins
+    assets/www/cordova.js
+    libs
+    res/xml/config.xml
+    cordova
+    CordovaLib
+
 
 ##Tutorials
 

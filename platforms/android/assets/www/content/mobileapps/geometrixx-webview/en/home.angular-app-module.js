@@ -28,7 +28,7 @@
                 
 
                 //set the server URL into the scope
-                $scope.publishServer = 'http://localhost:4503/';
+                $scope.publishServer = 'http:\/\/localhost:4503\/';
 
                 // Store the content package name in the scope
                 $scope.contentPackageName = 'en';

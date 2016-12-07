@@ -261,6 +261,14 @@ CQ.mobile.contentUtils = {
     },
 
     /**
+     * Removes the stored package information
+     * @param {string} name - content package name
+     */
+    removeContentPackageDetails: function(name) {
+        localStorage.removeItem(this.contentPackageDetailsKeyPrefix + name);
+    },
+
+    /**
      * Reads the specified request headers with the ones defined in the local storage. If a header is
      * present in both locations, the one in the local storage takes precedence.
      * @param {object} [specRequestHeaders] Optional object of request headers
@@ -516,7 +524,7 @@ CQ.mobile.contentInit = function(spec) {
  * ADOBE CONFIDENTIAL
  * ___________________
  *
- *  Copyright 2014 Adobe Systems Incorporated
+ *  Copyright 2014-2016 Adobe Systems Incorporated
  *  All Rights Reserved.
  *
  * NOTICE:  All information contained herein is, and remains
@@ -542,9 +550,6 @@ CQ.mobile.contentInit = function(spec) {
  *
  * @param {string} [spec.idPrefix]
  *         Prefix to prepend to the {@code spec.id} before invoking the content sync plugin.
- *
- * @param {string} [spec.localZipName='content-sync-update-payload.zip']
- *          Name to store the .zip update on the device file system
  *
  * @param {string} [spec.isUpdateAvailableSuffix='.pge-updates.json']
  *          Selector and extension for querying if an update is available
@@ -584,10 +589,6 @@ CQ.mobile.contentUpdate = function(spec) {
 
     spec = spec || {};
 
-    // Name to store the .zip update on the device file system
-    // todo: this variable is not used. remove ??
-    var localZipName = spec.localZipName || 'content-sync-update-payload.zip'; // jshint unused:false
-
     // Selector and extension for querying if an update is available
     var isUpdateAvailableSuffix = spec.isUpdateAvailableSuffix || '.pge-updates.json';
 
@@ -604,7 +605,7 @@ CQ.mobile.contentUpdate = function(spec) {
     // Query parameter for including `zipPath` in content sync update queries
     var contentSyncReturnRedirectPathParam = spec.contentSyncReturnRedirectPathParam || '&returnRedirectZipPath=true';
 
-    // JSON resource containing the package timestamp
+    // JSON resource containing the package timestamp and package updates
     var manifestFilePath = spec.manifestFilePath || '/www/pge-package-update.json';
 
     // HTTP headers to include in each request
@@ -613,9 +614,7 @@ CQ.mobile.contentUpdate = function(spec) {
     // Optional parameter, defaults to false. If set to true, it accepts all
     // security certificates. This is useful because Android rejects self-signed
     // security certificates. Not recommended for production use.
-
-    // todo: this variable is not used. remove or pass to content sync?
-    var trustAllHosts = spec.trustAllHosts || false; // jshint unused:false
+    var trustAllHosts = spec.trustAllHosts || false;
 
     // Pull app ID from localStorage, if available
     var localStorageAppIdKey = spec.localStorageAppIdKey || 'pge.appId';
@@ -623,6 +622,15 @@ CQ.mobile.contentUpdate = function(spec) {
     // Unique identifier to reference the cached content
     var id = localStorage.getItem(localStorageAppIdKey) || spec.id || 'default';
     var idPrefix = spec.idPrefix || '';
+
+    // List of deleted error files, for reporting
+    var deletedErrorFileList = [];
+
+    // Starting path for deleting files
+    var localUrl;
+
+    // List of files to compare to files to be deleted
+    var packageFiles = [];
 
     /**
      * Update the content package identified by `name`.
@@ -662,7 +670,8 @@ CQ.mobile.contentUpdate = function(spec) {
                 src: contentSyncUpdateURI,
                 id: idPrefix + id,
                 type: 'merge',
-                headers: requestHeaders
+                headers: requestHeaders,
+                trustHost: trustAllHosts
             });
 
             sync.on('complete', function(data) {
@@ -677,12 +686,36 @@ CQ.mobile.contentUpdate = function(spec) {
                     }
                     else {
                         // For backwards compat: reload the current page in absence of a callback
-                        console.log( '[contentUpdate] no callback specified; reloading app' );
+                        console.log('[contentUpdate] no callback specified; reloading app' );
                         window.location.reload( true );
                     }
                 };
 
-                updateLastUpdatedTimestamp(data.localPath, name, syncOperationComplete);
+                /**
+                 * handler for overall success in deleting files
+                 */
+                var removeDeletedContentSuccess = function() {
+                    console.log("[contentUpdate] Completed removal of unused files.");
+
+                    updateLastUpdatedTimestamp(data.localPath, name, syncOperationComplete);
+                };
+
+                /**
+                 * handler for overall success in deleting files
+                 */
+                var removeDeletedContentError = function() {
+
+                    console.error("[contentUpdate] failed to remove the following unused files:");
+
+                    for (var i = 0; i < deletedErrorFileList.length; i++) {
+                        console.error("[contentUpdate] - " + deletedErrorFileList[i]);
+                    }
+
+                    updateLastUpdatedTimestamp(data.localPath, name, syncOperationComplete);
+                };
+
+                localUrl = 'file://' + data.localPath;
+                initializePackageFiles(removeDeletedContentSuccess, removeDeletedContentError);
             });
 
             sync.on('error', function(e) {
@@ -704,37 +737,47 @@ CQ.mobile.contentUpdate = function(spec) {
         var contentPackageDetails = CQ.mobile.contentUtils.getContentPackageDetailsByName(name);
 
         if (contentPackageDetails) {
-            // Configure server endpoint from manifest details
-            var updateServerURI = getServerURL(contentPackageDetails);
+            // Check if the content package is already installed
+            isContentPackageAlreadyInstalled(contentPackageDetails, function(isInstalled) {
+                if (isInstalled === false) {
+                    // Because this package is not installed, the next query should use a timestamp of 0.
+                    // Update the timestamp to 0
+                    contentPackageDetails.timestamp = 0;
+                    CQ.mobile.contentUtils.storeContentPackageDetails(name, contentPackageDetails, true);
+                }
 
-            var ck = '&' + (new Date().getTime());
-            var updatePath = contentPackageDetails.updatePath;
+                // Configure server endpoint from manifest details
+                var updateServerURI = getServerURL(contentPackageDetails);
 
-            var contentSyncUpdateQueryURI = updateServerURI + updatePath + isUpdateAvailableSuffix +
+                var ck = '&' + (new Date().getTime());
+                var updatePath = contentPackageDetails.updatePath;
+
+                var contentSyncUpdateQueryURI = updateServerURI + updatePath + isUpdateAvailableSuffix +
                     contentSyncModifiedSinceParam + getContentPackageTimestamp(name) + ck +
                     contentSyncReturnRedirectPathParam;
 
-            console.log('[contentUpdate] querying for update with URI: [' + contentSyncUpdateQueryURI + '].');
+                console.log('[contentUpdate] querying for update with URI: [' + contentSyncUpdateQueryURI + '].');
 
-            CQ.mobile.contentUtils.getJSON(contentSyncUpdateQueryURI, function(error, data) {
-                if (error) {
-                    return callback(error);
-                }
+                CQ.mobile.contentUtils.getJSON(contentSyncUpdateQueryURI, function(error, data) {
+                    if (error) {
+                        return callback(error);
+                    }
 
-                if (data.updates === true && data.zipPath) {
-                    console.log('[contentUpdate] update is available for [' + name + '] at the following location: [' + data.zipPath + '].');
-                    return callback(null, true, data.zipPath);
-                }
-                else if (data.updates === true) {
-                    console.log('[contentUpdate] update is available for [' + name + '].');
-                    return callback(null, true);
-                }
-                else {
-                    console.log('[contentUpdate] NO update is available for [' + name + '].');
-                    return callback(null, false);
-                }
-            },
-            requestHeaders);
+                    if (data.updates === true && data.zipPath) {
+                        console.log('[contentUpdate] update is available for [' + name + '] at the following location: [' + data.zipPath + '].');
+                        return callback(null, true, data.zipPath);
+                    }
+                    else if (data.updates === true) {
+                        console.log('[contentUpdate] update is available for [' + name + '].');
+                        return callback(null, true);
+                    }
+                    else {
+                        console.log('[contentUpdate] NO update is available for [' + name + '].');
+                        return callback(null, false);
+                    }
+                },
+                requestHeaders);
+            });
         }
         else {
             var errorMessage = 'No contentPackageDetails set for name: [' + name + ']. Aborting.';
@@ -778,7 +821,7 @@ CQ.mobile.contentUpdate = function(spec) {
     /**
      * Returns the server URL of the package details.
      * The URL can be overridden by the spec.serverURL property.
-     * @param {object} packageDetails The package detauls from the local storage
+     * @param {object} packageDetails The package details from the local storage
      * @returns {string}
      */
     var getServerURL = function(packageDetails) {
@@ -792,6 +835,165 @@ CQ.mobile.contentUpdate = function(spec) {
 
         return url;
     };
+
+    /**
+     * Populate the packageFiles array with a list of filename from the pge-package-update.json file,
+     * first prepending them with '/www/' to facilitate matching with the pge_deletions file.
+     */
+    var initializePackageFiles = function(successCallback, failureCallback) {
+        if (packageFiles && (Array === packageFiles.constructor) && (packageFiles.length > 0)) {
+            removeDeletedContent(successCallback, failureCallback);
+        } else {
+            window.resolveLocalFileSystemURL(localUrl + manifestFilePath, function (fileEntry) {
+                CQ.mobile.contentUtils.getJSON(fileEntry.toURL(), function (error, jsonData) {
+                    if (jsonData && jsonData.files) {
+                        packageFiles = jsonData.files;
+                        // For each packageFile file, prepend it with '/www/'
+                        packageFiles.forEach(function(item, index) {
+                            packageFiles[index] = '/www/' + item;
+                        });
+                    }
+                    removeDeletedContent(successCallback, failureCallback);
+                }, function (error) {
+                    console.error('[contentUpdate] Error reading the ' + manifestFilePath + ' file.  Error Code: ' + error.code);
+                    removeDeletedContent(successCallback, failureCallback);
+                });
+            }, function (error) {
+                console.error('[contentUpdate] Error resolving the ' + manifestFilePath + ' file.  Error Code: ' + error.code);
+                removeDeletedContent(successCallback, failureCallback);
+            });
+
+        }
+    };
+
+    /**
+     * Read and handle the files in the deletion directory.
+     * There could be zero, one, or several such files.  Each one contains in json a list of files to delete.
+     */
+    var removeDeletedContent = function(successCallback, failureCallback) {
+        console.log('[contentUpdate] Looking for files to remove, in ' + localUrl + '/www/pge-deletions');
+
+        window.resolveLocalFileSystemURL(localUrl + '/www/pge-deletions', function(dirEntry) {
+            // Empty error file list in case it's not empty.
+            deletedErrorFileList = [];
+            var directoryReader = dirEntry.createReader();
+
+            console.log('[contentUpdate] Reading pge_deletions files.');
+            directoryReader.readEntries(function(entries){
+                readDeletionFiles(entries, successCallback, failureCallback);
+            },
+                function (error) {
+                console.error('[contentUpdate] Error reading deletion directory.  Error Code: ' + error.code);
+            });
+        }, function(error) {
+            console.log('[contentUpdate] No pge-deletions folder in ' + localUrl + '/www.  Error Code: ' + error.code);
+            return successCallback();
+        });
+    };
+
+
+    /**
+     * Given a list of deletion files (FileEntries), recursively read the content of each file, and act on it.
+     */
+    var readDeletionFiles = function(entries, successCallback, failureCallback) {
+
+        if (entries.length === 0) {
+            if (deletedErrorFileList.length === 0) {
+                return successCallback();
+            } else {
+                return failureCallback();
+            }
+        }
+
+        var deletionFile = entries.pop();
+        if (deletionFile.isFile && deletionFile.name.match(/pge_deletions_.*\.json/)) {
+
+            console.log('[contentUpdate] Reading pge_deletions file: ' + deletionFile.name);
+            CQ.mobile.contentUtils.getJSON(deletionFile.toURL(), function (error, jsonData) {
+                if (jsonData && jsonData.files) {
+                    removeFiles(jsonData.files, deletionFile, entries, successCallback, failureCallback);
+                }
+            }, null);
+        } else {
+            readDeletionFiles(entries, successCallback, failureCallback);
+        }
+    };
+
+    /**
+     * Given a list of files to delete, delete one and then recursively delete the rest
+     * (each file is a string).  When done, remove the deletion file.
+     */
+    var removeFiles = function(files, deletionFileEntry, entries, successCallback, failureCallback) {
+        var deleteFile = function(files) {
+            if (files.length === 0) {
+                console.log("[contentUpdate] " + deletionFileEntry.name + ": content files processed for removal.");
+
+                // Once finished, remove the deletion file
+                deletionFileEntry.remove(function() {
+                    console.log('[contentUpdate] Removed ' + deletionFileEntry.name);
+                    readDeletionFiles(entries, successCallback, failureCallback);
+                }, function(error) {
+                    console.error('[contentUpdate] Could not remove deletion file: ' + deletionFileEntry.name + '.  Error Code: ' + error.code);
+                    readDeletionFiles(entries, successCallback, failureCallback);
+                });
+            } else {
+
+                var file = files.pop();
+                window.resolveLocalFileSystemURL(localUrl + file, function (fileEntry) {
+                    if (packageFiles.indexOf(file) < 0) {
+                        fileEntry.remove(function () {
+                            console.log('[contentUpdate] Successfully removed ' + localUrl + file);
+                            deleteFile(files);
+                        }, function (error) {
+                            console.error('[contentUpdate] Could not remove ' + localUrl + file + '.  Error Code: ' + error.code);
+                            deletedErrorFileList.push(file);
+                            deleteFile(files);
+                        });
+                    } else {
+                        console.log('[contentUpdate] Did not remove ' + localUrl + file +
+                            ' because it is included in the latest update');
+                        deleteFile(files);
+                    }
+                }, function (error) {
+                    console.error('[contentUpdate] Could not find ' + localUrl + file + '.  Error Code: ' + error.code);
+                    deleteFile(files);
+                });
+            }
+        };
+
+        // start recursion
+        deleteFile(files);
+    };
+
+    /**
+     * Check if the given content package is already installed.
+     * @param {object} packageDetails The package details from local storage
+     * @returns {boolean}
+     */
+    var isContentPackageAlreadyInstalled = function(packageDetails, callback) {
+        var relativePathToHtmlContent = packageDetails.path.substring(1) + '.html';
+
+        console.log('[contentUpdate] looking for existing content for package: [' +
+        packageDetails.name + '] at path: [' + relativePathToHtmlContent + '].');
+
+        var absolutePathToHtmlContent = CQ.mobile.contentUtils.getPathToWWWDir(window.location.href) +
+            relativePathToHtmlContent;
+
+        window.resolveLocalFileSystemURL(absolutePathToHtmlContent,
+            function success() {
+                console.log('[contentUpdate] package [' + packageDetails.name + '] ' +
+                'root detected: package is already installed.');
+                callback(true);
+            },
+            function fail() {
+                console.log('[contentUpdate] package [' + packageDetails.name + '] ' +
+                'is NOT already installed.');
+                callback(false);
+            }
+        );
+    };
+
+
 
     // Exported functions
     var that = {

@@ -4,5 +4,6 @@
 .idea
 **/target/**
 **/node_modules
-temp
+tmp
+cordova
 .vlt
