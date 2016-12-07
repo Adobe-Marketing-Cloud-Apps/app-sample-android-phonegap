@@ -3,4 +3,4 @@
     jcr:primaryType="cq:ClientLibraryFolder"
     categories="[apps.geometrixx-webview.all]"
     dependencies="[topcoat]"
-    embed="[cq.mobileapps,cq.mobile.foundation.angular,cq.mobile.content-sync-2,cq.mobile.core.components.angular,cq.mobile.maps.angular,apps.geometrixx.webview]"/>
+    embed="[cq.mobile.content-sync-2,cq.mobileapps,cq.mobile.foundation.angular,apps.geometrixx.webview]"/>

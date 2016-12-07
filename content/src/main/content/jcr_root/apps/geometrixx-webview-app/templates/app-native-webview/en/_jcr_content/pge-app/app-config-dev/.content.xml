@@ -5,7 +5,7 @@
     cq:lastReplicationAction="Activate"
     jcr:mixinTypes="[cq:ReplicationStatus]"
     jcr:primaryType="cq:ContentSyncConfig"
-    jcr:title="Geometrixx Webview App Content - English - DEV"
+    jcr:title="Native Webview App Content - English - DEV"
     sling:resourceType="contentsync/config"
     authorizable="everyone"
     updateUser="admin"/>

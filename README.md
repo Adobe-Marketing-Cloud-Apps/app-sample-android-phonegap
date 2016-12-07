@@ -57,8 +57,11 @@ or
 * Command Line
   * <http://developer.android.com/tools/building/building-cmdline.html>
   * Build Debug Android APK
+  
         ./gradlew assembleDebug
+        
   * Deploy and Run
+  
         ./gradlew installDebug
 
 Experience Manager (AEM Mobile 6.2)
@@ -127,6 +130,7 @@ Add plugins
 
     cordova plugin add cordova-plugin-file@^4.3.0
     cordova plugin add cordova-plugin-file-transfer@^1.6.0
+    cordova plugin add cordova-plugin-dialogs@^1.2.1
     cordova plugin add phonegap-plugin-contentsync@^1.2.4
     cordova plugin add adobe-mobile-services@4.13.1-cor
 

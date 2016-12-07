@@ -17,4 +17,10 @@
 %><%@page session="false" %><%
 %><%@include file="/libs/foundation/global.jsp" %><%
 %>
+<!-- Enable all requests, inline styles, and eval() -->
+<!-- TODO: set a more restrictive CSP for production -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' gap://ready; style-src 'self' 'unsafe-inline' http://fonts.googleapis.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://maps.googleapis.com; connect-src *; img-src *">
+<!-- Disable telephone number detection in iOS webview -->
+<meta name = "format-detection" content = "telephone=no">
+
 <cq:includeClientLib css="apps.geometrixx-webview.all"/>

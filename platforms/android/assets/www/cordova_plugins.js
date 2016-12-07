@@ -208,6 +208,22 @@ module.exports = [
         ]
     },
     {
+        "id": "cordova-plugin-dialogs.notification",
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "pluginId": "cordova-plugin-dialogs",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "id": "cordova-plugin-dialogs.notification_android",
+        "file": "plugins/cordova-plugin-dialogs/www/android/notification.js",
+        "pluginId": "cordova-plugin-dialogs",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-hybrid/www/HybridBridge.js",
         "id": "cordova-plugin-hybrid.HybridBridge",
         "clobbers": [
@@ -224,6 +240,7 @@ module.exports.metadata =
     "phonegap-plugin-contentsync": "1.3.0",
     "adobe-mobile-services": "4.13.1",
     "cordova-plugin-file-transfer": "1.6.0",
+    "cordova-plugin-dialogs": "1.3.0",
     "cordova-plugin-hybrid": "1.0.0"
 };
 // BOTTOM OF METADATA

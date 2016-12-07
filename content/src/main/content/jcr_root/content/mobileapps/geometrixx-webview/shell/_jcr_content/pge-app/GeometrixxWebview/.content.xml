@@ -5,7 +5,7 @@
     cq:lastReplicationAction="Activate"
     jcr:mixinTypes="[cq:ReplicationStatus]"
     jcr:primaryType="cq:ContentSyncConfig"
-    jcr:title="Geometrixx Outdoors App Build"
+    jcr:title="Geometrixx Webview App Build"
     sling:resourceType="contentsync/config"
     authorizable="everyone"
     updateUser="admin"/>

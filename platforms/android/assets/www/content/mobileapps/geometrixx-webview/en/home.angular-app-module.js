@@ -13,10 +13,8 @@
 'ngTouch',
 'ngAnimate',
 'ngSanitize',
-'cqContentSyncUpdate',
 'cqAppControllers',
 'cqAppNavigation',
-'phonegapLocation',
 'geometrixx-banner'
 ])
 

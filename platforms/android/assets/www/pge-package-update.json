@@ -1,8 +1,5 @@
 {
-   "files": [
-      "config.xml",
-      "pge-content-packages.json"
-   ],
-   "count": 2,
-   "lastModified": 1481134845220
+   "files": ["content/mobileapps/geometrixx-webview/en/home.angular-app-module.js"],
+   "count": 1,
+   "lastModified": 1481139587234
    }
