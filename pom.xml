@@ -163,10 +163,6 @@
                     <groupId>org.apache.sling</groupId>
                     <artifactId>maven-sling-plugin</artifactId>
                     <version>2.1.0</version>
-                    <configuration>
-                        <username>${crx.username}</username>
-                        <password>${crx.password}</password>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>com.day.jcr.vault</groupId>
@@ -175,8 +171,6 @@
                     <extensions>true</extensions>
                     <configuration>
                         <failOnError>true</failOnError>
-                        <username>${crx.username}</username>
-                        <password>${crx.password}</password>
                     </configuration>
                 </plugin>
                 <!--This plugin's configuration is used to store Eclipse
@@ -217,7 +211,6 @@
 
     <modules>
       <module>content</module>
-      <module>platforms/android</module>
     </modules>
 
 </project>
